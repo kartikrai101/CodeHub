@@ -1,0 +1,1 @@
+{"name":"Local: RedundantBrackets","url":"/Users/kartik/Documents/CPP/Stack/RedundantBrackets.cpp","tests":[{"id":1668368562943,"input":"(a+b)","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/Stack/RedundantBrackets.cpp","group":"local","local":true}

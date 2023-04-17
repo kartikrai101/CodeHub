@@ -1,0 +1,1 @@
+{"name":"Local: MergeTwoBST","url":"/Users/kartik/Documents/CPP/BinarySearchTree/MergeTwoBST.cpp","tests":[{"id":1670783479501,"input":"2 4 8 16 12 21 48 10 -1\n3 5 9 15 11 22 35 58 -1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/BinarySearchTree/MergeTwoBST.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: SumTree","url":"/Users/kartik/Documents/CPP/BinaryTree/SumTree.cpp","tests":[{"id":1669017935759,"input":"1 2 3 -1 -1 4 -1 -1 5 6 -1 -1 7 -1 -1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/BinaryTree/SumTree.cpp","group":"local","local":true}

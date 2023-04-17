@@ -1,0 +1,1 @@
+{"name":"Local: NextSmallerValue","url":"/Users/kartik/Documents/CPP/Stack/NextSmallerValue.cpp","tests":[{"id":1668499345191,"input":"5\n3 4 5 2 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/Stack/NextSmallerValue.cpp","group":"local","local":true}

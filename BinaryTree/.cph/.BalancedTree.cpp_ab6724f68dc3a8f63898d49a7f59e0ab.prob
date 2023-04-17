@@ -1,0 +1,1 @@
+{"name":"Local: BalancedTree","url":"/Users/kartik/Documents/CPP/BinaryTree/BalancedTree.cpp","tests":[{"id":1669013631431,"input":"1 2 3 -1 -1 4 -1 -1 5 6 -1 -1 7 -1 -1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/BinaryTree/BalancedTree.cpp","group":"local","local":true}

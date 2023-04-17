@@ -1,0 +1,1 @@
+{"name":"Local: ZigZagTraversal","url":"/Users/kartik/Documents/CPP/BinaryTree/ZigZagTraversal.cpp","tests":[{"id":1669037852895,"input":"1 2 4 8 -1 -1 5 -1 -1 21 -1 -1 98 12 -1 -1 55 -1 -1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/BinaryTree/ZigZagTraversal.cpp","group":"local","local":true}

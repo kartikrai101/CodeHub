@@ -1,0 +1,1 @@
+{"name":"Local: MergeSort","url":"/Users/kartik/Documents/CPP/Sorting Techniques/MergeSort.cpp","tests":[{"id":1674724661939,"input":"6\n21 34 5 1 89 11","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/Sorting Techniques/MergeSort.cpp","group":"local","local":true}
