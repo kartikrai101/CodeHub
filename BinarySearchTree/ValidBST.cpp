@@ -109,21 +109,54 @@ bool validBST(node* root, int upper, int lower){
     return false;
 }
 
+// another algorithm for finding if a BST is valid or not in O(n)
+
+bool isValidBST(node* root){
+    // base case
+    if(root == NULL){
+        return true;
+    }
+
+    bool leftTree = isValidBST(root-> left);
+    bool rightTree = isValidBST(root -> right);
+
+    int val = root -> data;
+    if(leftTree && rightTree){
+        if(root -> left != NULL && root -> right != NULL){
+            if(val > root -> left -> data && val < root -> right -> data)
+                return true;
+            else
+                return false;
+        }else if(root -> left != NULL && root -> right == NULL){
+            if(val > root -> left -> data)
+                return true;
+            else
+                return false;
+        }else if(root -> left == NULL && root -> right != NULL){
+            if(val < root -> right -> data)
+                return true;
+            else    
+                return false;
+        }
+        else if(root -> left == NULL && root -> right == NULL)
+            return true;
+    }
+    return false;
+}
+
 int main(){
     node* root = NULL;
 
-    // cout << "Enter data to construct a BST: " << endl;
+    cout << "Enter data to construct a BST: " << endl;
 
-    // takeInput(root);
-
-    root = createBT(root);
-
+    takeInput(root);
+    
     levelOrderTraversal(root);
 
     int upperRange = INT_MAX;
     int lowerRange = INT_MIN;
 
-    if(validBST(root, upperRange, lowerRange)){
+    if(isValidBST(root)){
         cout << "The given tree is a BST!" << endl;
     }else{
         cout << "The given tree is not a BST!" << endl;

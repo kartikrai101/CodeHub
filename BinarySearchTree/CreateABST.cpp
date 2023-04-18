@@ -40,17 +40,45 @@ void levelOrderTraversal(node* root){
     }
 }
 
+// node* insertIntoBST(node* root, int data){
+//     // base case
+//     if(root == NULL){
+//         root = new node(data);
+//         return root;
+//     }
+
+//     if(data > root -> data){
+//         root -> right = insertIntoBST(root->right, data);
+//     }else{
+//         root -> left = insertIntoBST(root->left, data);
+//     }
+
+//     return root;
+// }
+
+// void takeInput(node* &root){
+//     int data;
+//     cin >> data;
+
+//     while(data != -1){
+//         root = insertIntoBST(root, data);
+//         cin >> data;
+//     }
+
+//     return;
+// }
+
 node* insertIntoBST(node* root, int data){
-    // base case
     if(root == NULL){
         root = new node(data);
         return root;
     }
 
     if(data > root -> data){
-        root -> right = insertIntoBST(root->right, data);
-    }else{
-        root -> left = insertIntoBST(root->left, data);
+        root -> right = insertIntoBST(root -> right, data);
+    }
+    else{
+        root -> left = insertIntoBST(root -> left, data);
     }
 
     return root;
@@ -61,7 +89,7 @@ void takeInput(node* &root){
     cin >> data;
 
     while(data != -1){
-        root = insertIntoBST(root, data);
+        insertIntoBST(root, data);
         cin >> data;
     }
 
