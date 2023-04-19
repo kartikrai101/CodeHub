@@ -87,6 +87,23 @@ node* LCAinBST(node* root, node* a, node* b){
     return root; 
 }
 
+// 2nd iteration of finding LCA
+Node* LCA(node* root, node* a, node* b){
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(root -> data < a -> data && root -> data < b-> data){
+        // go to the left subtree
+        return LCA(root -> left, a, b);
+    }
+    if(root -> data > a && root -> data > b){
+        return LCA(root -> right, a, b);
+    }
+
+    return root;
+}
+
 int main(){
     node* root = NULL;
 
