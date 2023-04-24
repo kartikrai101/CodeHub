@@ -1,164 +1,99 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// int solve1(string str){
-//     if(str[0] == '0'){
-//         return 0;
-//     }
-
-//     int n = str.length();
-//     int ans=1;
-//     int count = 0;
-//     for(int i=0; i<n; i++){
-//         if(str[i] == '?'){
-//             count++;
-//         }
-//     }
-
-//     if(str[0] == '?'){
-//         ans = pow(10, count-1) * 9;
-//     }else{
-//         ans = pow(10, count);
-//     }
-
-//     return ans;
-// }
-
-// pair<int, int> solve2(int n, int arr1[], int arr2[]){
-//     int ptr1=0;
-//     int ptr2 =0;
-
-//     pair<int, int> ans = make_pair(0, 0);
-//     int maxi=0;
-//     int count = 0;
-//     while(ptr2 < n){
-//         if(arr1[ptr1] == arr2[ptr1]){
-//             count = 0;
-//             ptr1++; ptr2++;
-//         }else{
-//             ptr2 = ptr1;
-//             while(arr1[ptr2] != arr2[ptr2]){
-//                 count++;
-//                 ptr2++;
-//             }
-//             while(arr2[ptr2] >= arr2[ptr2-1]){
-//                 count++;
-//                 ptr2++;
-//             }
-//             if(count > maxi){
-//                 maxi = count;
-//                 ans.first = ptr1;
-//                 ans.second = ptr2-1;
-//             }
-//         }
-//         ptr1 = ptr2;
-//     }
-
-//     return ans;
-// }
-
-pair<int, int> solve3(int n, int arr1[], int arr2[]){
-    int count =0;
-    int maxi = 0;
-
-    int p1 = 0; int p2 = 0;
-    pair<int, int> ans = make_pair(0, 0);
-
-    while(p2 < n-1){
-        p1 = p2;
-        count = 0;
-        while(arr2[p2] <= arr2[p2+1]){
-            count++;
-            p2++;
-        }
-        if(count > maxi){
-            maxi=count;
-            ans.first = p1;
-            ans.second = p2;
-        }
-        p2++;
+long long int maximumBeauty(int n, vector<long long> arr){
+    //return the maximum beauty that she can get
+    if(n == 2){
+        return arr[0]*arr[1];
     }
 
+    if(n == 3){
+        // either the multiple of 1&2, or the multiple of 2&3 or 1,3
+        return max(arr[0]*arr[1], max(arr[1]*arr[2], arr[0]*arr[2]));
+    }
+
+    sort(arr.begin(), arr.end());
+    //cout << arr[0] << " " << arr[n-1] << endl;
+    return max(arr[0]*arr[1], arr[n-1]*arr[n-2]);
+}
+
+long long bunLover(long long n){
+    // using the relation : n*4 + n(n-2) + 2
+    long long ans = n*4 + n*(n-2) + 2;
     return ans;
 }
 
-pair<int, int> solve4(int n, int arr1[], int arr2[]){
-    int p1 = -1;
-    int p2 = -1;
-    int mini = INT_MAX; int maxi = INT_MIN;
-
-    pair<int, int> ans = make_pair(0, 0);
-
-    for(int i=0; i< n; i++){
-        if(arr1[i] != arr2[i]){
-            p1 = i;
-            break;
-        }
-    }
-
-    for(int i=n-1; i>=0; i--){
-        if(arr1[i] != arr2[i]){
-            p2 = i;
-            break;
-        }
-    }
-
-    for(int i=p1; i<=p2; i++){
-        maxi = max(maxi, arr1[i]);
-        mini = min(mini, arr1[i]);
-    }
-
-    if(p1 > 0){
-        for(int i=p1-1; i>=0; i--){
-            if(arr1[i] <= mini){
-                p1--;
-                mini = arr1[i];
-            }else{
-                break;
-            }
-        }
-    }
-
-    if(p2 < n-1){
-        for(int i=p2+1; i<n; i++){
-            if(arr1[i] >= maxi){
-                p2++;
-                maxi = arr1[i];
-            }else{
-                break;
-            }
-        }
-    }
-
-    ans.first = p1+1;
-    ans.second = p2+1;
-
-    return ans;
+// Function for swapping two numbers
+void swap(int& x, int& y)
+{
+   int temp = x;
+   x = y;
+   y = temp;
 }
 
-// i think you need to find the biggest sorted chunk in the second array
+// Function to find the all possible permutations
+void permutations(vector<vector<int> >& res,
+            vector<int> nums, int l, int h)
+{
+   // Base case
+   // Add the vector to result and return
+   if (l == h) {
+      res.push_back(nums);
+      return;
+   }
+
+   // Permutations made
+   for (int i = l; i <= h; i++) {
+
+      // Swapping
+      swap(nums[l], nums[i]);
+
+      // Calling permutations for
+      // next greater value of l
+      permutations(res, nums, l + 1, h);
+
+      // Backtracking
+      swap(nums[l], nums[i]);
+   }
+}
+
+vector<vector<int> > permute(vector<int>& nums)
+{
+   // Declaring result variable
+   vector<vector<int> > res;
+   int x = nums.size() - 1;
+
+   // Calling permutations for the first
+   // time by passing l
+   // as 0 and h = nums.size()-1
+   permutations(res, nums, 0, x);
+   return res;
+}
+
+vector<int> superPermutation(int n, vector<int> permutation){
+
+}
 
 int main(){
-    int t; 
-    cin >> t;
-    while(t--){
+    int q;
+    cin >> q;
+    while(q--){
         int n; cin >> n;
-        int arr1[n]; int arr2[n];
-        for(int i=0; i< n; i++){
-            int d; cin >> d;
-            arr1[i] = d;
-        }
-        for(int i=0; i< n; i++){
-            int d; cin >> d;
-            arr2[i] = d;
-        }
+        string s; cin >> s;
 
-        // the arrays have zero base indexing
-        pair<int, int> p;
-        p = solve4(n, arr1, arr2);
-
-        cout << p.first << " " << p.second << endl;
+        cout << requiredSwaps(n, s) << endl;
     }
 
     return 0;
 }
+
+// int n; cin >> n;
+//         vector<int> nums(n);
+//         for(int i =0; i< n; i++){
+//             nums[i] = i+1;
+//         }
+//         vector<vector<int> > res = permute(nums);
+
+//         //res contains all the permutations of numbers up to n
+//         // now for every permutation, find the corresponding super permutation
+//         vector<int> super = superPermutation(n, nums);
