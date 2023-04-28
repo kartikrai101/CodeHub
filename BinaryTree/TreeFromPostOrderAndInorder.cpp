@@ -62,6 +62,26 @@ void preOrderTraversal(node* root){
     preOrderTraversal(root -> right);
 }
 
+void findPath(node* root, vector<int> &path, int target){
+    if(root == NULL){
+        return;
+    }
+
+    path.push_back(root -> data);
+    if(root->data == target){
+        //path.push_back(root -> data);
+        return;
+    }
+
+    findPath(root -> left, path, target);
+    findPath(root -> right, path, target);
+
+    // backtracking
+    //path.pop_back();
+    //return;
+}
+
+
 int main(){
     int N = 8;
     int in[] = {4, 8, 2, 5, 1, 6, 3, 7};
@@ -70,6 +90,13 @@ int main(){
     node* root = buildTree(in, post, 8);
 
     preOrderTraversal(root);
+    cout << endl;
+    vector<int> path1;
 
+    findPath(root, path1, 2);
+
+    for(int i=0; i< path1.size(); i++){
+        cout << path1[i] << " ";
+    }
     return 0;
 }

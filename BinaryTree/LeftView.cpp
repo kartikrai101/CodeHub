@@ -71,7 +71,7 @@ void solve(Node* root, vector<int> &ans, int level){
         Node* front = q.front();
         q.pop();
 
-        if(temp == NULL){
+        if(front == NULL){
             if(!q.empty()){
                 q.push(NULL);
                 ans.push_back(q.front() -> data);
@@ -91,6 +91,55 @@ void solve(Node* root, vector<int> &ans, int level){
     return;
 }
 
+bool findPath(Node* root, vector<int> &path, int target){
+    if(root == NULL){
+        return false;
+    }
+
+    path.push_back(root -> data);
+    if(root->data == target){
+        //path.push_back(root -> data);
+        return true;
+    }
+
+    bool leftTree = findPath(root -> left, path, target);
+    bool rightTree = findPath(root -> right, path, target);
+
+    if(leftTree || rightTree){
+        return true;
+    }
+
+    // backtracking
+    path.pop_back();
+    return false;
+}
+
+Node* findLCA(Node* root, int a, int b){
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(root -> data == a || root -> data==b){
+        return root;
+    }
+
+    //traverse the left and right subtree
+    Node* leftAns = findLCA(root -> left, a, b);
+    Node* rightAns = findLCA(root -> right, a, b);
+
+    if(leftAns != NULL && rightAns != NULL){
+        return root;
+    }
+    else if(leftAns != NULL && rightAns == NULL){
+        return leftAns;
+    }
+    else if(leftAns == NULL && rightAns != NULL){
+        return rightAns;
+    }else{
+        return NULL;
+    }
+}
+
 vector<int> leftView(Node* root){
     vector<int> ans;
     solve(root, ans, 0);
@@ -102,6 +151,10 @@ int main(){
     root = buildTree(root);
 
     levelOrderTraversal(root);
+
+    cout << endl;
+    Node* lca = findLCA(root, 3, 6);
+    cout << lca->data << endl;
 
     return 0;
 }
