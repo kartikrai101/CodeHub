@@ -140,6 +140,59 @@ Node* findLCA(Node* root, int a, int b){
     }
 }
 
+int findHeight(Node* root, int target, int level){
+    if(root == NULL){
+        return 0;
+    }
+
+    if(root -> data == target){
+        return level;
+    }
+
+    //traverse to left and right
+    int leftAns = findHeight(root -> left, target, level+1);
+    int rightAns = findHeight(root -> right, target, level+1);
+
+    level = level - 1;
+    return level;
+}
+
+int findHeightNew(Node* root, int target){
+    if(root == NULL){
+        return 0;
+    }
+
+    //create a queue to traverse the tree from root to the destination node
+    int level=0;
+    queue<Node*> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        Node* front = q.front();
+        q.pop();
+
+        if(front == NULL){
+            level++;
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }else{
+            if(front -> data == target){
+                return level;
+            }
+            if(front -> left){
+                q.push(front -> left);
+            }
+            if(front -> right){
+                q.push(front -> right);
+            }
+        }
+    }
+
+    return level;
+}
+
 vector<int> leftView(Node* root){
     vector<int> ans;
     solve(root, ans, 0);
@@ -155,6 +208,10 @@ int main(){
     cout << endl;
     Node* lca = findLCA(root, 3, 6);
     cout << lca->data << endl;
+
+    //cout << root -> data << endl;
+    int height = findHeightNew(lca, 4);
+    cout << "The height of Node 6 from root is: " << height << endl;
 
     return 0;
 }
