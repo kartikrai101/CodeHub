@@ -199,6 +199,32 @@ vector<int> leftView(Node* root){
     return ans;
 }
 
+int findKthAncestor(Node* root, int target, int &k){
+    if(root == NULL){
+        return -1;
+    }
+
+    if(root -> data == target){
+        return root -> data;
+    }
+
+    // traverse to the required node
+    int leftAns = findKthAncestor(root -> left, target, k);
+    int rightAns = findKthAncestor(root -> right, target, k);
+
+    // backtracking karo aur k ki value ko decrement karo
+    // as soon as k becomes zero, we have our required node
+    k--;
+    if(k == 0){
+        return root -> data;
+    }else{
+        return 
+    }
+    cout << "K -> " << k << endl;
+
+    return max(leftAns, rightAns);
+}
+
 int main(){
     Node* root = NULL;
     root = buildTree(root);
@@ -207,11 +233,14 @@ int main(){
 
     cout << endl;
     Node* lca = findLCA(root, 3, 6);
-    cout << lca->data << endl;
+    //cout << lca->data << endl;
 
     //cout << root -> data << endl;
-    int height = findHeightNew(lca, 4);
-    cout << "The height of Node 6 from root is: " << height << endl;
+    // int height = findHeightNew(lca, 4);
+    // cout << "The height of Node 6 from root is: " << height << endl;
+
+    int k=3;
+    cout << findKthAncestor(root, 6, k) << endl;
 
     return 0;
 }
