@@ -1,0 +1,1 @@
+{"name":"Local: MinimumCostForTickets","url":"/Users/kartik/Documents/CPP/DP/MinimumCostForTickets.cpp","tests":[{"id":1687096109865,"input":"2\n2 5\n1 4 25","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/kartik/Documents/CPP/DP/MinimumCostForTickets.cpp","group":"local","local":true}
